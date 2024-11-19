@@ -31,18 +31,26 @@ class WordCloud {
 
     wrangleData() {
         let vis = this;
+        const newsDesk = document.getElementById('news-desk-selector').value;
 
-        // Filter and tokenize titles
+        const categoryData = vis.data.filter(d =>
+            d.news_desk_category &&
+            d.news_desk_category.includes(newsDesk)
+        );
+
+        // Filter titles
         const stopWords = new Set([
             "the", "a", "an", "and", "to", "of", "in", "on", "at", "for", "by",
             "with", "as", "from", "that", "this", "is", "was", "it", "are", "be",
             "or", "not", "but", "they", "their", "you", "we", "our", "your", "he",
-            "she", "them", "his", "her", "its", "all", "will", "can"
+            "she", "them", "his", "her", "its", "all", "will", "can", "too", "into",
+            "what", "when", "where", "how", "why", "who", "which", "whom", "whose"
         ]);
 
         const wordCounts = {};
-        vis.data.forEach(d => {
-            d.title
+        console.log("our data: ", vis.data);
+        categoryData.forEach(d => {
+            d.headline
                 .toLowerCase()
                 .replace(/[^\w\s]/g, "") // Remove punctuation
                 .split(/\s+/)           // Split into words
@@ -52,8 +60,11 @@ class WordCloud {
                 });
         });
 
-        // Convert to array of objects
-        vis.displayData = Object.entries(wordCounts).map(([text, size]) => ({ text, size }));
+        // Convert to array of objects and limit to top 100 words
+        vis.displayData = Object.entries(wordCounts)
+            .map(([text, size]) => ({ text, size }))
+            .sort((a, b) => b.size - a.size)
+            .slice(0, 100);
 
         vis.updateVis();
     }
@@ -61,19 +72,24 @@ class WordCloud {
     updateVis() {
         let vis = this;
 
+        console.log("d3.layout.cloud:", d3.layout.cloud);
+
+        // Calculate most frequent word and normalize
+        const maxSize = d3.max(vis.displayData, d => d.size);
+
         const layout = d3.layout.cloud()
             .size([vis.width, vis.height])
             .words(vis.displayData)
             .padding(5)
             .rotate(() => ~~(Math.random() * 2) * 90)
-            .fontSize(d => Math.sqrt(d.size) * 10)
+            .fontSize(d => (d.size / maxSize) * 100)
             .on("end", draw);
 
         layout.start();
 
         // Draw  word cloud
         function draw(words) {
-            vis.wordGroup.selectAll("text").remove(); // Clear previous words
+            vis.wordGroup.selectAll("text").remove();
             vis.wordGroup.selectAll("text")
                 .data(words)
                 .enter()

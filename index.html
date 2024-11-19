@@ -24,12 +24,11 @@
         </div>
         <div>
             <label for="years">Choose a News Desk:</label>
-
-            <select name="years" id="years">
-                <option value="Sports">Sports</option>
-                <option value="Business">Business</option>
-                <option value="Travel">Travel</option>
-                <option value="Health">Health</option>
+            <select name="news-desk" id="news-desk-selector" onchange="lineGraph.wrangleData()">
+                <option value="SPORTS">Sports</option>
+                <option value="BUSINESS">Business</option>
+                <option value="TRAVEL">Travel</option>
+                <option value="HEALTH">Health</option>
             </select>
 
             <div id="line-graph"></div>
@@ -48,6 +47,7 @@
 
     <!-- Load data, create visualizations -->
     <script src="js/main.js"></script>
+    <script src="js/lineGraph.js"></script>
 
 </body>
 </html>

@@ -34,6 +34,7 @@
             <p class="description">2. Are there underlying similarities between the different topics?</p>
             <p class="description">3. How can we apply data science concepts of analysis from CS109 to our headline data?</p>
         </div>
+
         <div class="section">
             <h3>Learn about the different News Desks</h3>
             <select name="news-desk" id="news-desk-description-selector">
@@ -43,37 +44,72 @@
                 <option value="HEALTH">Health</option>
             </select>
             <div id="news-desk-description" class="description">
+                Sports media covering a wide variety of sports with a focus on American sports like American Football, basketball, football as well as soccer, track and field, etc. Articles in this new desk cover how different teams and athletes are doing at various competitions or in their respective seasons. They may even cover dramatic and controversial stories regarding athletes.
             </div>
         </div>
 
-        <div>
-            <label for="news-desk-selector">Choose a News Desk:</label>
-            <select name="news-desk" id="news-desk-selector" onchange="lineGraph.wrangleData()">
+        <div class="section">
+            <h3>Line Graph: Articles Published Over the Years</h3>
+            <div id="line-graph"></div>
+        </div>
+
+        <div class="section">
+            <h3>Word Cloud: Most Used Words</h3>
+            <div id="word-cloud"></div>
+        </div>
+
+        <div class="section">
+            <h3>Heatmap: Word Count vs. Publication Year</h3>
+            <div id="heatmap"></div>
+        </div>
+
+        <div class="section">
+            <p class="description">
+                PCA visualization coming...
+            </p>
+            <p class="description">
+                In the meantime, we can discuss takeaways from this project.
+                This project has taught us that media is an everchanging landscape.
+                Even within the record keeping and data of these esteemed media companies like the New York Times,
+                the data formatting is inconsistent and disorganized at times.
+                So for the average reader, it definitely will be difficult to keep track of how headlines change over time.
+            </p>
+
+        </div>
+
+        <div class="section">
+            <p id="created-by-text">This project was created by:</p>
+            <div class="team">
+                <div class="team-member">
+                    <img src="imgs/Joshua.jpg" alt="Joshua Zhang">
+                    <p>Joshua Zhang</p>
+                </div>
+
+                <div class="team-member">
+                    <img src="imgs/Eric.jpg" alt="Eric Vasquez">
+
+                    <p>Eric Vasquez</p>
+                </div>
+
+            </div>
+        </div>
+
+        <footer>
+            <p>Acknowledgements</p>
+            <p>Sources</p>
+        </footer>
+
+        <div class="sidebar">
+            <h4>Filters</h4>
+            <label for="news-desk-selector">Select News Desk:</label>
+            <select id="news-desk-selector">
                 <option value="SPORTS">Sports</option>
                 <option value="BUSINESS">Business</option>
                 <option value="TRAVEL">Travel</option>
                 <option value="HEALTH">Health</option>
             </select>
-            <div class="section">
-                <div id="line-graph"></div>
-            </div>
-            <div class="section">
-                <div id="word-cloud"></div>
-            </div>
-            <div class="section">
-                <p class="description">
-                    PCA visualization coming...
-                </p>
-                <p class="description">
-                    In the meantime, we can discuss takeaways from this project. 
-                    This project has taught us that media is an everchanging landscape.
-                    Even within the record keeping and data of these esteemed media companies like the New York Times, 
-                    the data formatting is inconsistent and disorganized at times.
-                    So for the average reader, it definitely will be difficult to keep track of how headlines change over time.
-                </p>
-            
-            </div>
         </div>
+
     </div>
     <!-- Load JS libraries -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -90,5 +126,6 @@
     <script type="module" src="js/main.js"></script>
     <script src="js/lineGraph.js"></script>
     <script src="js/wordCloud.js"></script>
+    <script src="js/heatmap.js"></script>
 </body>
 </html>

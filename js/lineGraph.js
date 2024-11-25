@@ -72,10 +72,23 @@ class LineGraph {
             .attr("class", "axis x-axis")
             .attr("transform", `translate(0, ${vis.height})`)
             .call(vis.xAxis);
+        vis.svg.append("text")
+            .attr("class", "x-axis-label")
+            .attr("x", vis.width / 2)
+            .attr("y", vis.height + vis.margin.bottom)
+            .attr("text-anchor", "middle")
+            .text("Year");
     
         vis.svg.append("g")
             .attr("class", "axis y-axis")
             .call(vis.yAxis);
+        vis.svg.append("text")
+            .attr("class", "y-axis-label")
+            .attr("x", -vis.height / 2)
+            .attr("y", -vis.margin.left + 10)
+            .attr("text-anchor", "middle")
+            .attr("transform", "rotate(-90)")
+            .text("Articles Published");
 
         const line = d3.line()
             .x(d => vis.xScale(d.year))

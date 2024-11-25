@@ -15,7 +15,7 @@
     <!-- Custom CSS code -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body background="imgs/background.jpg">
     <div class="container">
 
         <div class="header">
@@ -25,7 +25,7 @@
         </div>
 
         <div>
-            <label for="years">Choose a News Desk:</label>
+            <label for="news-desk-selector">Choose a News Desk:</label>
             <select name="news-desk" id="news-desk-selector" onchange="lineGraph.wrangleData()">
                 <option value="SPORTS">Sports</option>
                 <option value="BUSINESS">Business</option>
@@ -34,6 +34,8 @@
             </select>
 
             <div id="line-graph"></div>
+
+            <div id="word-cloud"></div>
         </div>
     </div>
     <!-- Load JS libraries -->
@@ -50,6 +52,7 @@
     <!-- Load data, create visualizations -->
     <script src="js/main.js"></script>
     <script src="js/lineGraph.js"></script>
+    <script src="js/wordCloud.js"></script>
 
 </body>
 </html>

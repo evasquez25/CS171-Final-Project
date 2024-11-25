@@ -17,11 +17,33 @@
 </head>
 <body background="imgs/background.jpg">
     <div class="container">
-
         <div class="header">
             <h1 id="header-title">
                 The History of The New York Times
             </h1>
+        </div>
+
+        <h1 id="typewriter-title" class="line-1 anim-typewriter">
+            New York Times Headlines
+        </h1>
+
+        <div class="section">
+            <h3>Welcome to Our Project</h3>
+            <p class="description">In our project, we sought to answer the following questions about New York Times Headlines from the years 1990 to 2020.</p>
+            <p class="description">1. How have the New York Times coverage of different topics changed over the years?</p>
+            <p class="description">2. Are there underlying similarities between the different topics?</p>
+            <p class="description">3. How can we apply data science concepts of analysis from CS109 to our headline data?</p>
+        </div>
+        <div class="section">
+            <h3>Learn about the different News Desks</h3>
+            <select name="news-desk" id="news-desk-description-selector">
+                <option value="SPORTS">Sports</option>
+                <option value="BUSINESS">Business</option>
+                <option value="TRAVEL">Travel</option>
+                <option value="HEALTH">Health</option>
+            </select>
+            <div id="news-desk-description" class="description">
+            </div>
         </div>
 
         <div>
@@ -32,10 +54,25 @@
                 <option value="TRAVEL">Travel</option>
                 <option value="HEALTH">Health</option>
             </select>
-
-            <div id="line-graph"></div>
-
-            <div id="word-cloud"></div>
+            <div class="section">
+                <div id="line-graph"></div>
+            </div>
+            <div class="section">
+                <div id="word-cloud"></div>
+            </div>
+            <div class="section">
+                <p class="description">
+                    PCA visualization coming...
+                </p>
+                <p class="description">
+                    In the meantime, we can discuss takeaways from this project. 
+                    This project has taught us that media is an everchanging landscape.
+                    Even within the record keeping and data of these esteemed media companies like the New York Times, 
+                    the data formatting is inconsistent and disorganized at times.
+                    So for the average reader, it definitely will be difficult to keep track of how headlines change over time.
+                </p>
+            
+            </div>
         </div>
     </div>
     <!-- Load JS libraries -->
@@ -50,9 +87,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"></script>
 
     <!-- Load data, create visualizations -->
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
     <script src="js/lineGraph.js"></script>
     <script src="js/wordCloud.js"></script>
-
 </body>
 </html>

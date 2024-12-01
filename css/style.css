@@ -77,6 +77,7 @@ select:hover, select:focus {
 }
 
 #news-desk-description {
+	font-size: 28px;
 	background-color: lightblue;
 	opacity: 80%;
 	white-space: normal;
@@ -95,7 +96,7 @@ select:hover, select:focus {
 }
 
 .description {
-	font-size: 20px;
+	font-size: 28px;
 	text-align: left;
 	padding-left: 60px;
 	padding-right: 60px;

@@ -24,11 +24,19 @@ let dateParser = d3.timeParse("%Y-%m-%d");
 let lineGraph;
 let wordCloud;
 let heatmap;
+let sovietHeadlines;
 
 d3.csv("data/randomized_data.csv", row => row).then(displayData => {
     lineGraph = new LineGraph("line-graph", displayData);
     wordCloud = new WordCloud("word-cloud", displayData);
     heatmap = new Heatmap("heatmap", displayData);
+});
+
+d3.csv("data/soviet_headlines.csv", row => {
+    row.year = Math.floor(+row.year);
+    return row;
+}).then(headlineData => {
+    sovietHeadlines = new SovietHeadlines("soviet-headlines", headlineData);
 });
 
 document.getElementById('news-desk-selector').addEventListener('change', () => {

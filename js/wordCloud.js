@@ -11,9 +11,9 @@ class WordCloud {
     initVis() {
         let vis = this;
 
-        vis.margin = { top: 20, right: 20, bottom: 20, left: 20 };
+        vis.margin = { top: 20, right: 27, bottom: 20, left: 0 };
         vis.width = document.getElementById(vis.parentElement).clientWidth - vis.margin.left - vis.margin.right;
-        vis.height = 500 - vis.margin.top - vis.margin.bottom;
+        vis.height = 400 - vis.margin.top - vis.margin.bottom;
 
         vis.svg = d3.select(`#${vis.parentElement}`)
             .append("svg")
@@ -48,7 +48,6 @@ class WordCloud {
         ]);
 
         const wordCounts = {};
-        console.log("our data: ", vis.data);
         categoryData.forEach(d => {
             d.headline
                 .toLowerCase()

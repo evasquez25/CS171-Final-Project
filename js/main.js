@@ -1,6 +1,23 @@
 // Function to convert date objects to strings or reverse
 import { newsDeskDescriptions } from "./newsDeskDescriptions.js";
 
+const width = 500;
+const height = 500;
+
+// const points = d3.range(20).map(() => ({
+//     x: Math.random() * width,
+//     y: Math.random() * height
+// }))
+
+// const circles = d3.selected("svg")
+//     .selectAll("circles")
+//     .data(points)
+//     .join("circles")
+//     .attr("cx", width / 2)
+//     .attr("cy", height / 2)
+//     .attr("r", 10)
+//     .attr('color', "steelblue");
+
 let dateFormatter = d3.timeFormat("%Y-%m-%d");
 let dateParser = d3.timeParse("%Y-%m-%d");
 
@@ -29,4 +46,19 @@ document.getElementById('news-desk-description-selector')
         }
     });
 
+// instantiate the scrollama
+const scroller = scrollama();
 
+// setup the instance, pass callback functions
+scroller
+  .setup({
+    step: ".step",
+  })
+  .onStepEnter((response) => {
+    console.log("enter", response);
+    // { element, index, direction }
+  })
+  .onStepExit((response) => {
+    console.log("exit", response);
+    // { element, index, direction }
+  });

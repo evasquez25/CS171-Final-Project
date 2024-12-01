@@ -1,54 +1,29 @@
+html {
+	min-height: 100%;
+	overflow: auto;
+}
+
 body {
 	font-family: 'Neuton', serif;
-	background-size: cover;
-	background-position: center;
-}
-
-.header {
-	background-color: rgba(247, 247, 247, 0.8);
-	padding: 30px 20px;
-	width: 60%;
-	margin: 0px auto 60px;
-	border: 2px solid #d4cfc9;
-	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-	border-radius: 10px;
+	background-color: whitesmoke;
+	display: -webkit-flex;
 	display: flex;
-	justify-content: center;
+	-webkit-align-items: center;
 	align-items: center;
-}
-
-.section {
-	background-color: antiquewhite;
-	border-radius: 10%;
-	border-color: black;
-	border-width: thick;
-	color: #333;
-}
-
-#news-desk-description {
-	background-color: lightblue;
-	border-radius: 10%;
-	opacity: 80%;
-	white-space: normal;
-	overflow: visible;
-	text-overflow: initial;
-}
-
-#header-title {
-	font-size: 48px;
-	color: #5a4a4a;
-	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-	font-weight: 800;
-	letter-spacing: 2px;
-	font-style: italic;
-	text-align: center;
+	-webkit-justify-content: center;
+	justify-content: center;
 }
 
 div {
 	padding: 20px;
 	margin: 20px auto;
-	max-width: 900px;
+	width: 100vw;
 	text-align: center;
+}
+
+svg {
+    display: block;
+    margin: 0;
 }
 
 /* Label styling */
@@ -77,6 +52,48 @@ select:hover, select:focus {
 	background-color: #f1f1f1;
 }
 
+.step {
+	background-color: white;
+	border-color: black;
+	border-width: thick;
+	color: #333;
+}
+
+.header {
+	width: 100vw;
+	height: 100vh;   
+	margin: 0px auto 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.section {
+	background-color: antiquewhite;
+	border-radius: 10%;
+	border-color: black;
+	border-width: thick;
+	color: #333;
+}
+
+#news-desk-description {
+	background-color: lightblue;
+	opacity: 80%;
+	white-space: normal;
+	overflow: visible;
+	text-overflow: initial;
+}
+
+#header-title {
+	font-size: 48px;
+	color: #5a4a4a;
+	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+	font-weight: 800;
+	letter-spacing: 2px;
+	font-style: italic;
+	text-align: center;
+}
+
 .description {
 	font-size: 20px;
 	text-align: left;
@@ -86,9 +103,9 @@ select:hover, select:focus {
 
 /* Graph container styling */
 
-
 #line-graph {
-	height: 550px;
+	height: auto;
+	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -97,12 +114,20 @@ select:hover, select:focus {
 }
 
 #word-cloud {
-	height: 550px;
+	height: auto;
+	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	font-size: 16px;
 	color: #999;
+}
+
+/* Heatmap styling */
+#heatmap {
+	height: auto;
+	width: 100%;
+	margin: 20px auto;
 }
 
 /* Created By Section Styling */
@@ -138,11 +163,6 @@ footer {
 	width: 100%;
 }
 
-/* Heatmap styling */
-#heatmap {
-	margin: 20px auto;
-	width: 80%;
-}
 
 .bar {
 	stroke: #ffffff;
@@ -207,43 +227,36 @@ footer {
 /* Typewriter effects, code adapted from:
 https://css-tricks.com/snippets/css/typewriter-effect/
 */
-#typewriter-title {
-	color: black;
-	font-family: American Typewriter;
-}
 
 @import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
 
-        html {
-            min-height: 100%;
-            overflow: auto;
-        }
-        body {
-            height: calc(100vh - 8em);
-            padding: 4em;
-            color: rgba(255,255,255,.75);
-            font-family: 'Neuton', serif;
-            background-color: rgb(25,25,25);
-        }
-        .line-1 {
-            position: relative;
-            width: 24em;
-            margin: 0 auto;
-            border-right: 2px solid rgba(255,255,255,.75);
-            font-size: 180%;
-            text-align: center;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-        .anim-typewriter {
-            animation: typewriter 4s steps(44) 1s 1 normal both,
-                       blinkTextCursor 500ms steps(44) infinite normal;
-        }
-        @keyframes typewriter {
-            from { width: 0; }
-            to { width: 24em; }
-        }
-        @keyframes blinkTextCursor {
-            from { border-right-color: rgba(0, 0, 0, 0.75); }
-            to { border-right-color: transparent; }
-        }
+#typewriter-title {
+	color: black;
+	font-family: Rubrik;
+	font-size: 48px;
+	text-align: center;
+}
+
+.line-1 {
+	position: absolute;
+	width: 16em;
+	margin: 0 auto;
+	border-right: 2px solid rgba(255,255,255,.75);
+	font-size: 180%;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.anim-typewriter {
+	animation: typewriter 5s steps(30) 1s 1 normal both,
+				blinkTextCursor 600ms steps(30) infinite normal;
+}
+@keyframes typewriter {
+	from { width: 0; }
+	to { width: 16em; }
+}
+@keyframes blinkTextCursor {
+	from { border-right-color: rgba(0, 0, 0, 0.75); }
+	to { border-right-color: transparent; }
+}

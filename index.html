@@ -15,55 +15,85 @@
     <!-- Custom CSS code -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body background="imgs/background.jpg">
+<body>
     <div class="container">
-        <div class="header">
-            <h1 id="header-title">
-                The History of The New York Times
-            </h1>
-        </div>
-
-        <h1 id="typewriter-title" class="line-1 anim-typewriter">
-            New York Times Headlines
-        </h1>
-
-        <div class="section">
-            <h3>Welcome to Our Project</h3>
-            <p class="description">In our project, we sought to answer the following questions about New York Times Headlines from the years 1990 to 2020.</p>
-            <p class="description">1. How have the New York Times coverage of different topics changed over the years?</p>
-            <p class="description">2. Are there underlying similarities between the different topics?</p>
-            <p class="description">3. How can we apply data science concepts of analysis from CS109 to our headline data?</p>
-        </div>
-
-        <div class="section">
-            <h3>Learn about the different News Desks</h3>
-            <select name="news-desk" id="news-desk-description-selector">
-                <option value="SPORTS">Sports</option>
-                <option value="BUSINESS">Business</option>
-                <option value="TRAVEL">Travel</option>
-                <option value="HEALTH">Health</option>
-            </select>
-            <div id="news-desk-description" class="description">
-                Sports media covering a wide variety of sports with a focus on American sports like American Football, basketball, football as well as soccer, track and field, etc. Articles in this new desk cover how different teams and athletes are doing at various competitions or in their respective seasons. They may even cover dramatic and controversial stories regarding athletes.
+        <section>
+            <div class="header">
+                <h1 id="typewriter-title" class="line-1 anim-typewriter">
+                    New York Times Headlines 1990-2020
+                </h1>
             </div>
-        </div>
+        </section>
+        <section>
+            <div class="step" style="background-image: url('imgs/background.jpg');">
+                <h1>Welcome to Our Project</h1>
+                <p class="description">
+                    Our world is reflected and influenced by the reporting of 
+                    major media companies, which observe and spread news stories
+                    about events in a digestible and meaningful way. The 
+                    tecnological advancements of the last several decades have
+                    also shown us that media is not only a game of reporting, but
+                    also capturing readers' attention. Thus, headlines of news
+                    articles seek to toe the line between delivering information
+                    with journalistic integrity and also piquing peoples'
+                    curiousity. We sought to answer
+                    the following questions about New York Times Headlines
+                    from the years 1990 to 2020.
+                </p>
+                <p class="description">
+                    1. What was important to readers
+                    over the years 1990-2020 How is it different to what is 
+                    important to readers now?
+                </p>
+                <p class="description">
+                    2. Are there underlying similarities between the 
+                    different topics?
+                </p>
+                <p class="description">
+                    3. How can we apply data science concepts of analysis 
+                    to our headline data?
+                </p>
+            </div>
+        </section>
+        <section>
+            <div class="step">
+                <h2>Learn about the different News Desks</h2>
+                <select name="news-desk" id="news-desk-description-selector">
+                    <option value="SPORTS">Sports</option>
+                    <option value="BUSINESS">Business</option>
+                    <option value="TRAVEL">Travel</option>
+                    <option value="HEALTH">Health</option>
+                </select>
+                <div id="news-desk-description" class="step">
+                    Sports media covering a wide variety of sports with a focus on 
+                    American sports like American Football, basketball, football as well 
+                    as soccer, track and field, etc. Articles in this new desk cover how 
+                    different teams and athletes are doing at various competitions or 
+                    in their respective seasons. They may even cover dramatic and 
+                    controversial stories regarding athletes.
+                </div>
+            </div>
+        </section>
 
-        <div class="section">
-            <h3>Line Graph: Articles Published Over the Years</h3>
-            <div id="line-graph"></div>
-        </div>
-
-        <div class="section">
-            <h3>Word Cloud: Most Used Words</h3>
-            <div id="word-cloud"></div>
-        </div>
-
-        <div class="section">
-            <h3>Heatmap: Word Count vs. Publication Year</h3>
-            <div id="heatmap"></div>
-        </div>
-
-        <div class="section">
+        <section>
+            <div class="step">
+                <div class="row">
+                    <div class="col-4 text-start">
+                        <h2>Line Graph: Articles Published 1991-2020</h2>
+                        <div id="line-graph"></div>
+                    </div>
+                    <div class="col-4 text-start">
+                        <h2 style="padding-left: 50px;">Word Cloud: Most Used Words</h2>
+                        <div id="word-cloud"></div>
+                    </div>
+                    <div class="col-4 text-start">
+                        <h2>Heatmap: Headline Word Count vs. Publication Year</h2>
+                        <div id="heatmap"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="step">
             <p class="description">
                 PCA visualization coming...
             </p>
@@ -74,9 +104,31 @@
                 the data formatting is inconsistent and disorganized at times.
                 So for the average reader, it definitely will be difficult to keep track of how headlines change over time.
             </p>
-
         </div>
 
+        <div class="step">
+            <h2>Through the years</h2>
+
+            <hr>
+
+            <h4>1991</h4>
+            <p class="description">
+                In 1991, the Soviet Union officially dissolved amidst
+                great political instability and calls for reform in 
+                its eastern satellite states. Amidst great political
+                and economic instability. The Russian oil industry
+                suffered heavy hits. Russian involvement in the Gulf War
+                also stretched its resources thin. That same year,
+                the 1991 Racha 7.2 Magnitude Earthquake struck the region
+                of modern day Georgia, killing around 100 civilians. All
+                of these events contributed to the fall of the Soviet
+                Union, and the New York Times covered all these events
+                closely. The word 'Soviet' is included 566 times in our
+                database in the year 1991, one of the most commonly
+                occuring keywords that year. 
+            </p>
+            <h4>2001</h4>
+        </div>
         <div class="section">
             <p id="created-by-text">This project was created by:</p>
             <div class="team">
@@ -121,6 +173,8 @@
 
     <!-- d3-cloud -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"></script>
+    <!-- scrollama -->
+    <script src="https://unpkg.com/scrollama"></script>
 
     <!-- Load data, create visualizations -->
     <script type="module" src="js/main.js"></script>

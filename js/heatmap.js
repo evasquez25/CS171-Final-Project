@@ -10,7 +10,7 @@ class Heatmap {
     initVis() {
         let vis = this;
 
-        vis.margin = { top: 40, right: 20, bottom: 40, left: 60 };
+        vis.margin = { top: 40, right: 100, bottom: 40, left: 60 };
         vis.width = document.getElementById(vis.parentElement).clientWidth - vis.margin.left - vis.margin.right;
         vis.height = 500 - vis.margin.top - vis.margin.bottom;
 

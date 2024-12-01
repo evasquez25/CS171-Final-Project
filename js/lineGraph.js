@@ -9,13 +9,9 @@ class LineGraph {
 
     initVis() {
         let vis = this;
-
-        // Set up margins and dimensions
-        vis.margin = { top: 20, right: 20, bottom: 50, left: 50 };
-        vis.width = 700 - vis.margin.left - vis.margin.right; 
-        vis.height = 500 - vis.margin.top - vis.margin.bottom;
-
-        // Append the SVG
+        vis.margin = { top: 20, right: 35, bottom: 50, left: 0 };
+        vis.width = document.getElementById(vis.parentElement).clientWidth - vis.margin.left - vis.margin.right;
+        vis.height = 400 - vis.margin.top - vis.margin.bottom;
         vis.svg = d3.select("#line-graph")
             .append("svg")
             .attr("width", vis.width + vis.margin.left + vis.margin.right)

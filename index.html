@@ -46,32 +46,15 @@
                     important to readers now?
                 </p>
                 <p class="description">
-                    2. Are there underlying similarities between the 
-                    different topics?
-                </p>
-                <p class="description">
-                    3. How can we apply data science concepts of analysis 
-                    to our headline data?
+                    2. How can we piece together historical events and
+                    stories through the headlines of the New York Times?
                 </p>
             </div>
         </section>
         <section>
             <div class="step">
                 <h2>Learn about the different News Desks</h2>
-                <select name="news-desk" id="news-desk-description-selector">
-                    <option value="SPORTS">Sports</option>
-                    <option value="BUSINESS">Business</option>
-                    <option value="TRAVEL">Travel</option>
-                    <option value="HEALTH">Health</option>
-                </select>
-                <div id="news-desk-description" class="step">
-                    Sports media covering a wide variety of sports with a focus on 
-                    American sports like American Football, basketball, football as well 
-                    as soccer, track and field, etc. Articles in this new desk cover how 
-                    different teams and athletes are doing at various competitions or 
-                    in their respective seasons. They may even cover dramatic and 
-                    controversial stories regarding athletes.
-                </div>
+                <div id="news-desk-description" class="step"></div>
             </div>
         </section>
 
@@ -81,6 +64,7 @@
                     <div class="col-4 text-start">
                         <h2>Line Graph: Articles Published 1991-2020</h2>
                         <div id="line-graph"></div>
+                        <div id="slider"></div>
                     </div>
                     <div class="col-4 text-start">
                         <h2 style="padding-left: 50px;">Word Cloud: Most Used Words</h2>
@@ -186,6 +170,14 @@
                 the names of multiple candidates and the president at the
                 time all show up as top keywords in the headlines.
             </p>  
+
+            <h4>2019</h4>
+            <p class="description">
+                This is the last years of what we have data for. This is
+                where headlines about the coronavirus and the 2019
+                pandemic start to appear. We can chart the spread of
+                coronavirus. 
+            </p>  
         </div>
         <div class="section">
             <p id="created-by-text">This project was created by:</p>
@@ -233,12 +225,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"></script>
     <!-- scrollama -->
     <script src="https://unpkg.com/scrollama"></script>
-
+    <!-- slider -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.4.0/nouislider.min.js"
+        integrity="sha512-mZXUH8DAODwCHioWP3gltQwa953LbABMlzTYwYkKqv8eNxOk37B1HgNNuCMfFxgrpW5C34WJbxPDcM58+s1dJA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js"></script>
+        
     <!-- Load data, create visualizations -->
     <script type="module" src="js/main.js"></script>
-    <script src="js/sovietHeadlines.js"></script>
+    <script src="js/NewsDeskDescriptions.js"></script>
     <script src="js/lineGraph.js"></script>
     <script src="js/wordCloud.js"></script>
     <script src="js/heatmap.js"></script>
+    <script src="js/sovietHeadlines.js"></script>
 </body>
 </html>

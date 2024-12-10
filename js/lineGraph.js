@@ -9,18 +9,24 @@ class LineGraph {
 
     initVis() {
         let vis = this;
+    
+        vis.slider = document.getElementById("slider");
+    
         vis.margin = { top: 20, right: 35, bottom: 50, left: 0 };
         vis.width = document.getElementById(vis.parentElement).clientWidth - vis.margin.left - vis.margin.right;
         vis.height = 400 - vis.margin.top - vis.margin.bottom;
-        vis.svg = d3.select("#line-graph")
+    
+        vis.svg = d3.select(`#${vis.parentElement}`)
             .append("svg")
             .attr("width", vis.width + vis.margin.left + vis.margin.right)
             .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
             .append("g")
             .attr("transform", `translate(${vis.margin.left}, ${vis.margin.top})`);
-
+    
         vis.wrangleData();
+        // vis.updateSlider();
     }
+    
 
     wrangleData() {
         let vis = this;
@@ -98,5 +104,51 @@ class LineGraph {
             .attr("fill", "none")
             .attr("stroke", "steelblue")
             .attr("stroke-width", 2);
-    }   
+    }
+    updateSlider() {
+        let vis = this;
+
+        let slider = document.getElementById("slider");
+        noUiSlider.create(slider, {
+            start: [1991, 2020],
+            connect: true,
+            range: {
+                min: 1991,
+                max: 2020
+            },
+            step: 1
+        });
+
+    
+        const startYear = d3.min(vis.freqData, d => d.year);
+        const endYear = d3.max(vis.freqData, d => d.year);
+    
+        if (!vis.slider.noUiSlider) {
+            noUiSlider.create(vis.slider, {
+                start: [startYear, endYear],
+                connect: true,
+                behaviour: "drag",
+                range: {
+                    min: startYear,
+                    max: endYear
+                },
+                step: 1
+            });
+        }
+    
+        vis.slider.noUiSlider.on("update", (values) => {
+            const [minYear, maxYear] = values.map(v => +v);
+    
+            const filteredData = vis.data.filter(d => d.year >= minYear && d.year <= maxYear);
+    
+            vis.freqData = [];
+            for (let i = minYear; i <= maxYear; i++) {
+                const count = filteredData.filter(d => +d.year === i).length;
+                vis.freqData.push({ year: i, count: count });
+            }
+    
+            vis.updateVis();
+        });
+    }
+    
 }

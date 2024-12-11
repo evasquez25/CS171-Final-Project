@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="description" content="">
@@ -25,7 +25,7 @@
             </div>
         </section>
         <section>
-            <div class="step" style="background-image: url('imgs/background.jpg');">
+            <div class="step" style="background-image: url('imgs/background-2.png')">
                 <h1>Welcome to Our Project</h1>
                 <p class="description">
                     Our world is reflected and influenced by the reporting of 
@@ -42,7 +42,7 @@
                 </p>
                 <p class="description">
                     1. What was important to readers
-                    over the years 1990-2020 How is it different to what is 
+                    over the years 1990-2020. How is it different to what is
                     important to readers now?
                 </p>
                 <p class="description">
@@ -60,6 +60,20 @@
 
         <section>
             <div class="step">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <!-- Select menu -->
+                        <label for="news-desk-selector" class="form-label">
+                            Select a News Desk:
+                        </label>
+                        <select id="news-desk-selector" class="form-select" style="width: 50%; margin: 0 auto;" onchange="updateAllVisualizations()">
+                            <option value="SPORTS">Sports</option>
+                            <option value="BUSINESS">Business</option>
+                            <option value="TRAVEL">Travel</option>
+                            <option value="HEALTH">Health</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-4 text-start">
                         <h2>Line Graph: Articles Published 1991-2020</h2>
@@ -179,7 +193,7 @@
                 coronavirus. 
             </p>  
         </div>
-        <div class="section">
+        <div class="step">
             <p id="created-by-text">This project was created by:</p>
             <div class="team">
                 <div class="team-member">
@@ -200,18 +214,6 @@
             <p>Acknowledgements</p>
             <p>Sources</p>
         </footer>
-
-        <div class="sidebar">
-            <h4>Filters</h4>
-            <label for="news-desk-selector">Select News Desk:</label>
-            <select id="news-desk-selector">
-                <option value="SPORTS">Sports</option>
-                <option value="BUSINESS">Business</option>
-                <option value="TRAVEL">Travel</option>
-                <option value="HEALTH">Health</option>
-            </select>
-        </div>
-
     </div>
     <!-- Load JS libraries -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

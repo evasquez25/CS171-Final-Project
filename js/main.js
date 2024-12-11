@@ -46,7 +46,7 @@ d3.csv("data/randomized_data.csv", row => {
   wordCloud = new WordCloud("word-cloud", displayData);
   heatmap = new Heatmap("heatmap", displayData);
 
-  updateSlider(displayData);
+  // lineGraph.updateSlider();
 });
 
 d3.csv("data/news_desk_descriptions.csv", row => row).then(data => {

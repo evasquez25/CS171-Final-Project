@@ -38,16 +38,24 @@ let heatmap;
 let sovietHeadlines;
 
 
-d3.csv("data/randomized_data.csv", row => {
+d3.csv("data/lineGraph_heatMap_data.csv", row => {
   row.year = Math.floor(row.year);
+  row.headline_count = +row.headline_count;
+  row.avg_headline_len = +row.avg_headline_len;
   return row
 }).then(displayData => {
   lineGraph = new LineGraph("line-graph", displayData);
-  wordCloud = new WordCloud("word-cloud", displayData);
-  heatmap = new Heatmap("heatmap", displayData);
+  // heatmap = new Heatmap("heatmap", displayData);
 
   // lineGraph.updateSlider();
 });
+
+// d3.csv("data/lineGraph_heatMap.csv", row => {
+//   row.year = Math.floor(row.year);
+//   return row
+// }).then(displayData => {
+//   wordCloud = new WordCloud("word-cloud", displayData);
+// });
 
 d3.csv("data/news_desk_descriptions.csv", row => row).then(data => {
   newsDeskDescriptions = new NewsDeskDescriptions("news-desk-description", 

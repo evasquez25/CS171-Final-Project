@@ -169,14 +169,6 @@ footer {
 	stroke-width: 1px;
 }
 
-.x-axis path, .y-axis path {
-	display: none;
-}
-
-.x-axis line, .y-axis line {
-	stroke: #ccc;
-	stroke-dasharray: 2 2;
-}
 
 
 

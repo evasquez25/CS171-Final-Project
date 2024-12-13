@@ -12,9 +12,9 @@ class LineGraph {
     
         vis.slider = document.getElementById("slider");
     
-        vis.margin = { top: 20, right: 35, bottom: 50, left: 0 };
+        vis.margin = { top: 20, right: 55, bottom: 50, left: 55 };
         vis.width = document.getElementById(vis.parentElement).clientWidth - vis.margin.left - vis.margin.right;
-        vis.height = 400 - vis.margin.top - vis.margin.bottom;
+        vis.height = 500 - vis.margin.top - vis.margin.bottom;
     
         vis.svg = d3.select(`#${vis.parentElement}`)
             .append("svg")
@@ -33,16 +33,19 @@ class LineGraph {
     
         vis.freqData = [];
         const newsDesk = document.getElementById('news-desk-selector').value;
-
         const categoryData = vis.data.filter(d => 
-            d.news_desk_category && 
-            d.news_desk_category.includes(newsDesk)
+            d.ndc === newsDesk
         );
 
-        for (let i = 1991; i <= 2021; i++) {
-            const count = categoryData.filter(d => +d.year === i).length;
+        console.log(categoryData)
+
+        for (let i = 1991; i < 2021; i++) {
+            const rightDict = categoryData.filter(d => d.year === i);
+            const count = rightDict[0].headline_count
             vis.freqData.push({ year: i, count: count });
         }
+
+        console.log(vis.freqData);
 
         const minX = d3.min(vis.freqData, d => d.year);
         const maxX = d3.max(vis.freqData, d => d.year);
@@ -50,7 +53,6 @@ class LineGraph {
             .domain([minX, maxX])
             .range([0, vis.width]);
 
-        const minY = d3.min(vis.freqData, d => d.count);
         const maxY = d3.max(vis.freqData, d => d.count);
         vis.yScale = d3.scaleLinear()
             .domain([0, maxY])
@@ -73,7 +75,9 @@ class LineGraph {
         vis.svg.append("g")
             .attr("class", "axis x-axis")
             .attr("transform", `translate(0, ${vis.height})`)
-            .call(vis.xAxis);
+            .call(vis.xAxis)
+            .selectAll("path, line")
+            .attr("stroke", "black")
         vis.svg.append("text")
             .attr("class", "x-axis-label")
             .attr("x", vis.width / 2)
@@ -83,7 +87,10 @@ class LineGraph {
     
         vis.svg.append("g")
             .attr("class", "axis y-axis")
-            .call(vis.yAxis);
+            .attr("transform", `translate(0, 0)`)
+            .call(vis.yAxis)
+            .selectAll("path, line")
+            .attr("stroke", "black");
         vis.svg.append("text")
             .attr("class", "y-axis-label")
             .attr("x", -vis.height / 2)
@@ -105,50 +112,50 @@ class LineGraph {
             .attr("stroke", "steelblue")
             .attr("stroke-width", 2);
     }
-    updateSlider() {
-        let vis = this;
+    // updateSlider() {
+    //     let vis = this;
 
-        let slider = document.getElementById("slider");
-        noUiSlider.create(slider, {
-            start: [1991, 2020],
-            connect: true,
-            range: {
-                min: 1991,
-                max: 2020
-            },
-            step: 1
-        });
+    //     let slider = document.getElementById("slider");
+    //     noUiSlider.create(slider, {
+    //         start: [1991, 2020],
+    //         connect: true,
+    //         range: {
+    //             min: 1991,
+    //             max: 2020
+    //         },
+    //         step: 1
+    //     });
 
     
-        const startYear = d3.min(vis.freqData, d => d.year);
-        const endYear = d3.max(vis.freqData, d => d.year);
+    //     const startYear = d3.min(vis.freqData, d => d.year);
+    //     const endYear = d3.max(vis.freqData, d => d.year);
     
-        if (!vis.slider.noUiSlider) {
-            noUiSlider.create(vis.slider, {
-                start: [startYear, endYear],
-                connect: true,
-                behaviour: "drag",
-                range: {
-                    min: startYear,
-                    max: endYear
-                },
-                step: 1
-            });
-        }
+    //     if (!vis.slider.noUiSlider) {
+    //         noUiSlider.create(vis.slider, {
+    //             start: [startYear, endYear],
+    //             connect: true,
+    //             behaviour: "drag",
+    //             range: {
+    //                 min: startYear,
+    //                 max: endYear
+    //             },
+    //             step: 1
+    //         });
+    //     }
     
-        vis.slider.noUiSlider.on("update", (values) => {
-            const [minYear, maxYear] = values.map(v => +v);
+    //     vis.slider.noUiSlider.on("update", (values) => {
+    //         const [minYear, maxYear] = values.map(v => +v);
     
-            const filteredData = vis.data.filter(d => d.year >= minYear && d.year <= maxYear);
+    //         const filteredData = vis.data.filter(d => d.year >= minYear && d.year <= maxYear);
     
-            vis.freqData = [];
-            for (let i = minYear; i <= maxYear; i++) {
-                const count = filteredData.filter(d => +d.year === i).length;
-                vis.freqData.push({ year: i, count: count });
-            }
+    //         vis.freqData = [];
+    //         for (let i = minYear; i <= maxYear; i++) {
+    //             const count = filteredData.filter(d => +d.year === i).length;
+    //             vis.freqData.push({ year: i, count: count });
+    //         }
     
-            vis.updateVis();
-        });
-    }
+    //         vis.updateVis();
+    //     });
+    // }
     
 }

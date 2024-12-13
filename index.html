@@ -67,28 +67,33 @@
                             Select a News Desk:
                         </label>
                         <select id="news-desk-selector" class="form-select" style="width: 50%; margin: 0 auto;" onchange="updateAllVisualizations()">
+                            <option value="BUSINESS/ECONOMY/FINANCIAL">Business, Economy, and Finance</option>
+                            <option value="WORLD/INTERNATIONAL/FOREIGN">World News</option>
                             <option value="SPORTS">Sports</option>
-                            <option value="BUSINESS">Business</option>
+                            <option value="HOME">Home</option>
+                            <option value="ARTS/CULTURE">Arts and Culture</option>
+                            <option value="WEEKEND">Weekend</option>
+                            <option value="MEDIA">Media</option>
+                            <option value="ENTERTAINMENT">Entertainment</option>
+                            <option value="OPINION/EDITORIAL">Opinion Editorial</option>
                             <option value="TRAVEL">Travel</option>
-                            <option value="HEALTH">Health</option>
                         </select>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-4 text-start">
-                        <h2>Line Graph: Articles Published 1991-2020</h2>
-                        <div id="line-graph"></div>
-                        <div id="slider"></div>
-                    </div>
-                    <div class="col-4 text-start">
-                        <h2 style="padding-left: 50px;">Word Cloud: Most Used Words</h2>
-                        <div id="word-cloud"></div>
-                    </div>
-                    <div class="col-4 text-start">
-                        <h2>Heatmap: Headline Word Count vs. Publication Year</h2>
-                        <div id="heatmap"></div>
-                    </div>
+
+                    <h2>Line Graph: Articles Published 1991-2020</h2>
+                    <div id="line-graph"></div>
+                    <div id="slider"></div>
+
+                <div class="col-4 text-start">
+                    <h2 style="padding-left: 50px;">Word Cloud: Most Used Words</h2>
+                    <div id="word-cloud"></div>
                 </div>
+                <div class="col-4 text-start">
+                    <h2>Heatmap: Headline Word Count vs. Publication Year</h2>
+                    <div id="heatmap"></div>
+                </div>
+
             </div>
         </section>
         <div class="step">

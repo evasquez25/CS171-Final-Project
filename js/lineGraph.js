@@ -69,7 +69,9 @@ class LineGraph {
         vis.svg.selectAll(".y-axis").remove();
         vis.svg.selectAll(".line").remove();
 
-        vis.xAxis = d3.axisBottom(vis.xScale);
+        vis.xAxis = d3.axisBottom(vis.xScale)
+            .ticks(28)
+            .tickFormat(d3.format("d"));
         vis.yAxis = d3.axisLeft(vis.yScale);
 
         vis.svg.append("g")
@@ -112,50 +114,4 @@ class LineGraph {
             .attr("stroke", "steelblue")
             .attr("stroke-width", 2);
     }
-    // updateSlider() {
-    //     let vis = this;
-
-    //     let slider = document.getElementById("slider");
-    //     noUiSlider.create(slider, {
-    //         start: [1991, 2020],
-    //         connect: true,
-    //         range: {
-    //             min: 1991,
-    //             max: 2020
-    //         },
-    //         step: 1
-    //     });
-
-    
-    //     const startYear = d3.min(vis.freqData, d => d.year);
-    //     const endYear = d3.max(vis.freqData, d => d.year);
-    
-    //     if (!vis.slider.noUiSlider) {
-    //         noUiSlider.create(vis.slider, {
-    //             start: [startYear, endYear],
-    //             connect: true,
-    //             behaviour: "drag",
-    //             range: {
-    //                 min: startYear,
-    //                 max: endYear
-    //             },
-    //             step: 1
-    //         });
-    //     }
-    
-    //     vis.slider.noUiSlider.on("update", (values) => {
-    //         const [minYear, maxYear] = values.map(v => +v);
-    
-    //         const filteredData = vis.data.filter(d => d.year >= minYear && d.year <= maxYear);
-    
-    //         vis.freqData = [];
-    //         for (let i = minYear; i <= maxYear; i++) {
-    //             const count = filteredData.filter(d => +d.year === i).length;
-    //             vis.freqData.push({ year: i, count: count });
-    //         }
-    
-    //         vis.updateVis();
-    //     });
-    // }
-    
 }

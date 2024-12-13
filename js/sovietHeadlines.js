@@ -58,32 +58,56 @@ class SovietHeadlines {
 
         vis.updateVis()
     }
-    
+
     updateVis() {
         let vis = this;
-
-        let text = vis.svg.selectAll("text")
+    
+        let textGroups = vis.svg.selectAll(".text-group")
             .data(vis.displayData);
     
-        text.enter()
-            .append("text")
-            .attr("class", "label")
-            .merge(text)
-            .attr("x", d => {
+        textGroups.enter()
+            .append("g")
+            .attr("class", "text-group")
+            .merge(textGroups)
+            .attr("transform", d => {
                 const textPoint = vis.points.filter(data => data.year == d.year);
-                return (textPoint[0].x + 200);
+                return `translate(${textPoint[0].x + vis.width / 10}, ${vis.height / 2})`;
             })
-            .attr("y", vis.height / 2)
-            .attr("text-anchor", "middle")
-            .attr("fill", "lightgray")
-            .style("font-size", "18px")
-            .text(d => {
-                const textPoint = vis.points.filter(data => data.year == d.year);
-                const year = textPoint[0].year
-                return (year + ":  " + d.headline); 
+            .each(function(d) {
+                const group = d3.select(this);
+    
+                group.selectAll("text").remove();
+    
+                const boxWidth = vis.width / 5 - 20; 
+                const words = (d.year + ": " + d.headline).split(" ");
+                const lineHeight = 20; 
+                let line = [];
+                let y = -10;
+                let tspan = group.append("text")
+                    .attr("fill", "white")
+                    .attr("text-anchor", "middle")
+                    .attr("dy", y)
+                    .style("font-size", "18px");
+    
+                words.forEach(word => {
+                    line.push(word);
+                    tspan.text(line.join(" "));
+                    if (tspan.node().getComputedTextLength() > boxWidth) {
+                        line.pop();
+                        tspan.text(line.join(" "));
+                        line = [word];
+                        y += lineHeight;
+                        tspan = group.append("text")
+                            .attr("fill", "white")
+                            .attr("text-anchor", "middle")
+                            .attr("dy", y)
+                            .style("font-size", "18px")
+                            .text(word);
+                    }
+                });
             });
     
-        text.exit().remove();
+        textGroups.exit().remove();
     }
-       
+    
 }

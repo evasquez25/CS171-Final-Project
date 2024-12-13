@@ -15,17 +15,6 @@ const height = 500;
 //     .attr("r", 10)
 //     .attr('color', "steelblue");
 
-// let slider = document.getElementById("slider");
-// noUiSlider.create(slider, {
-//     start: [1991, 2020],
-//     connect: true,
-//     range: {
-//         min: 1991,
-//         max: 2020
-//     },
-//     step: 1
-// });
-
 
 let dateFormatter = d3.timeFormat("%Y-%m-%d");
 let dateParser = d3.timeParse("%Y-%m-%d");
@@ -46,8 +35,6 @@ d3.csv("data/lineGraph_heatMap_data.csv", row => {
 }).then(displayData => {
   lineGraph = new LineGraph("line-graph", displayData);
   // heatmap = new Heatmap("heatmap", displayData);
-
-  // lineGraph.updateSlider();
 });
 
 // d3.csv("data/lineGraph_heatMap.csv", row => {
@@ -74,6 +61,10 @@ document.getElementById('news-desk-selector').addEventListener('change', () => {
   wordCloud.wrangleData();
   heatmap.wrangleData();
   newsDeskDescriptions.wrangleData();
+});
+
+document.getElementById('sovietHeadlinesButton').addEventListener("click", () => {
+  sovietHeadlines.wrangleData();
 });
 
 const scroller = scrollama();

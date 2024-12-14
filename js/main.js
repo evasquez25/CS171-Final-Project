@@ -1,7 +1,6 @@
 const width = 500;
 const height = 500;
 
-let newsDeskData;
 let newsDeskDescriptions;
 let lineGraph;
 let wordCloud;

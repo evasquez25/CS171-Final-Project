@@ -24,8 +24,7 @@ d3.csv("data/wordcloud_data.csv", row => row).then(displayData => {
 });
 
 d3.csv("data/news_desk_descriptions.csv", row => row).then(data => {
-  newsDeskDescriptions = new NewsDeskDescriptions("news-desk-description", 
-                                                   data);
+  newsDeskDescriptions = new NewsDeskDescriptions("news-desk-description", data);
 });
 
 

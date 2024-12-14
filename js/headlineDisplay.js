@@ -1,7 +1,7 @@
 // This will be a visualization to generate headlines about the Soviet
 // Union in 1991 and the years after. 
 
-class SovietHeadlines {
+class HeadlinesDisplay {
     constructor(parentElement, data) {
 		this.parentElement = parentElement;
 		this.data = data;
@@ -21,16 +21,29 @@ class SovietHeadlines {
             .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
             .append("g")
             .attr("transform", `translate(${vis.margin.left}, ${vis.margin.top})`);
-    
-        vis.points = [
-            {year: 1991, x: 0},
-            {year: 1992, x: vis.width / 4},
-            {year: 1993, x: (2 * vis.width) / 4},
-            {year: 1994, x: (3 * vis.width) / 4}
-        ];
 
-        const colorScale = d3.scaleLinear()
-            .domain([1991, 1994])
+        if (vis.parentElement === "soviet-headlines") {
+            vis.points = [
+                {year: 1991, x: 0},
+                {year: 1992, x: vis.width / 4},
+                {year: 1993, x: (2 * vis.width) / 4},
+                {year: 1994, x: (3 * vis.width) / 4}
+            ];
+        } else if (vis.parentElement === "financial-crisis-headlines") {
+            vis.points = [
+                {year: 2007, x: 0},
+                {year: 2008, x: vis.width / 4},
+                {year: 2009, x: (2 * vis.width) / 4},
+                {year: 2010, x: (3 * vis.width) / 4}
+            ];
+        }
+
+        const sovietColorScale = d3.scaleLinear()
+            .domain([1991, 1995])
+            .range(['green', 'steelblue']);
+
+        const financeColorScale = d3.scaleLinear()
+            .domain([2007, 2010])
             .range(['green', 'steelblue']);
     
         vis.svg.selectAll("rect")
@@ -40,8 +53,14 @@ class SovietHeadlines {
             .attr("y", d => 0)
             .attr('width', vis.width / 5)
             .attr('height', vis.height)
-            .attr("fill", d => colorScale(d.year));
-        
+            .attr("fill", d => {
+                if (vis.parentElement === "soviet-headlines") {
+                    return sovietColorScale(d.year);
+                } else if (vis.parentElement === "financial-crisis-headlines") {
+                    return financeColorScale(d.year);
+                }
+            });
+
         vis.wrangleData()
     }
 
@@ -49,11 +68,19 @@ class SovietHeadlines {
         let vis = this;
         vis.displayData = [];
 
-        // Find random data to wrangle and eventually render
-        for (let year = 1991; year < 1995; year++) {
-            const yearData = vis.data.filter(row => row.year == year);
-            const randYearHeadline = yearData[Math.floor(Math.random() * yearData.length)];
-            vis.displayData.push(randYearHeadline);
+        if (vis.parentElement === "soviet-headlines") {
+            // Find random data to wrangle and eventually render
+            for (let year = 1991; year < 1995; year++) {
+                const yearData = vis.data.filter(row => row.year == year);
+                const randYearHeadline = yearData[Math.floor(Math.random() * yearData.length)];
+                vis.displayData.push(randYearHeadline);
+            }
+        } else if (vis.parentElement === "financial-crisis-headlines") {
+            for (let year = 2007; year < 2011; year++) {
+                const yearData = vis.data.filter(row => row.year == year);
+                const randYearHeadline = yearData[Math.floor(Math.random() * yearData.length)];
+                vis.displayData.push(randYearHeadline);
+        }
         }
 
         vis.updateVis()

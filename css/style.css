@@ -101,6 +101,17 @@ select:hover, select:focus {
 	padding-top: 40px;
 }
 
+.statistic {
+	font-size: 50px;
+	color: black;
+	text-align: center;
+	padding-left: 30%;
+	padding-right: 30%;
+	background-color: lightblue;
+	border-radius: 10px;	
+}
+
+
 /* Graph container styling */
 
 #line-graph {

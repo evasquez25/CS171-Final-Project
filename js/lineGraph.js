@@ -10,8 +10,6 @@ class LineGraph {
     initVis() {
         let vis = this;
     
-        vis.slider = document.getElementById("slider");
-    
         vis.margin = { top: 20, right: 55, bottom: 50, left: 55 };
         vis.width = document.getElementById(vis.parentElement).clientWidth - vis.margin.left - vis.margin.right;
         vis.height = 500 - vis.margin.top - vis.margin.bottom;
@@ -24,7 +22,6 @@ class LineGraph {
             .attr("transform", `translate(${vis.margin.left}, ${vis.margin.top})`);
     
         vis.wrangleData();
-        // vis.updateSlider();
     }
     
 
@@ -37,15 +34,12 @@ class LineGraph {
             d.ndc === newsDesk
         );
 
-        console.log(categoryData)
 
         for (let i = 1991; i < 2021; i++) {
             const rightDict = categoryData.filter(d => d.year === i);
             const count = rightDict[0].headline_count
             vis.freqData.push({ year: i, count: count });
         }
-
-        console.log(vis.freqData);
 
         const minX = d3.min(vis.freqData, d => d.year);
         const maxX = d3.max(vis.freqData, d => d.year);

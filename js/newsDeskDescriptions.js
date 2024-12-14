@@ -18,7 +18,6 @@ class NewsDeskDescriptions {
             .attr("x", 20)
             .attr("y", 20)
             .attr("class", "news-desk-description-text");
-
     }
 
     wrangleData() {

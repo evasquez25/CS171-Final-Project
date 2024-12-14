@@ -36,9 +36,9 @@
                     also capturing readers' attention. Thus, headlines of news
                     articles seek to toe the line between delivering information
                     with journalistic integrity and also piquing peoples'
-                    curiousity. We sought to answer
-                    the following questions about New York Times Headlines
-                    from the years 1990 to 2020.
+                    curiousity. We sought to answer the following questions or 
+                    achieve the following goals with the New York Times Headlines
+                    from the years 1991 to 2020.
                 </p>
                 <p class="description">
                     1. What was important to readers
@@ -49,12 +49,14 @@
                     2. How can we piece together historical events and
                     stories through the headlines of the New York Times?
                 </p>
-            </div>
-        </section>
-        <section>
-            <div class="step">
-                <h2>Learn about the different News Desks</h2>
-                <div id="news-desk-description" class="step"></div>
+                <p class="description">
+                    3. This website visualization serves as the exploratory
+                    data analysis component of our CS1090A class, a class 
+                    on data science. Once we are done with that project, 
+                    we will provide the link to those materials as well. We
+                    worked on principle component analysis of our data and
+                    also built predictive models for regression and classification.
+                </p>
             </div>
         </section>
 
@@ -62,11 +64,10 @@
             <div class="step">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <!-- Select menu -->
                         <label for="news-desk-selector" class="form-label">
                             Select a News Desk:
                         </label>
-                        <select id="news-desk-selector" class="form-select" style="width: 50%; margin: 0 auto;" onchange="updateAllVisualizations()">
+                        <select id="news-desk-selector" class="form-select" style="width: 50%; margin: 0 auto;">
                             <option value="BUSINESS/ECONOMY/FINANCIAL">Business, Economy, and Finance</option>
                             <option value="WORLD/INTERNATIONAL/FOREIGN">World News</option>
                             <option value="SPORTS">Sports</option>
@@ -81,36 +82,115 @@
                     </div>
                 </div>
 
+                <h2>Learn about the different News Desks.</h2>
+                <p class="description">
+                    The following descriptions were compiled from the New York
+                    Times itself or other online sources detailing the contents 
+                    of the different news desks. 
+                </p>
+                <div id="news-desk-description" class="step"></div>
+
                 <div>
                     <h2>Line Graph: Articles Published 1991-2020 By News Desk</h2>
                     <div id="line-graph"></div>
                 </div>
-                <div class="col-4 text-start">
+                <div>
                     <h2 style="padding-left: 50px;">Word Cloud: Most Used Words</h2>
                     <div id="word-cloud"></div>
                 </div>
-                <div class="col-4 text-start">
-                    <h2>Heatmap: Headline Word Count vs. Publication Year</h2>
+                <div>
+                    <h2>Heatmap: Headline Character Count vs. Publication Year</h2>
                     <div id="heatmap"></div>
                 </div>
 
             </div>
         </section>
         <div class="step">
+            <div class="row">
+
             <p class="description">
-                PCA visualization coming...
+                Observe the next two scatter plots below with different colored data points. 
+                Principle Component Analysis allows us to see that semantically, there are
+                differences between different headlines in the "business, economy, and 
+                finance" and "travel" news desks. We also see that there are differences
+                between the "Media" and "Sports" news desks. This is because the different
+                colored data points tend to bunch up into clusters with other data points of
+                the same color. A little more about this below... 
             </p>
-            <p class="description">
-                In the meantime, we can discuss takeaways from this project.
+                <div class="col-6">
+                    <img src="imgs/business_travel_PCA.png" style="text-align:center; width:80%; height:auto;">
+                </div>
+                <div class="col-6">
+                    <p class="description" style="padding-top: 0px">
+                        Part of our project involved performing principle component analysis
+                        (PCA) on the vector embeddings of the headlines. We were able to use 
+                        a sentence transformer Python library that converts text into very
+                        high dimensional vectors. Then, these vectors can be contained in
+                        one data matrix, which means that we can perform principle component
+                        analysis on it! We won't discuss to much of what PCA actually is
+                        mathematically. If you are unfamiliar, just know that it can used to
+                        group complicated data into clusters and look for patterns. 
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <p class="description" style="padding-top: 0px">
+                        As we can see, the vector embeddings of headlines from different
+                        news desks actually do form different clusters, which means that
+                        there do exist semantic differences in the headlines of different
+                        news desks that Python's sentence transformer library can detect.
+                        Since the contents of the headlines are different, they will
+                        receive different values in their components of the vectors, and
+                        PCA does the best job of visualizing these complicated differences.
+                    </p>
+                </div>
+                <div class="col-6">
+                    <img src="imgs/media_sports_PCA.png" style="text-align:center; width:80%; height:auto;">
+                </div>
+            </div>
+
+            <p class="description" style="padding-top:0px">
+                Next, we combed through keywords in the headlines that jumped out at us
+                throughout the years. It was very cool and surprising in some cases to see
+                what historical events can and cannot be observed from looking at an
+                overview of the headlines. 
                 This project has taught us that media is an everchanging landscape.
                 Even within the record keeping and data of these esteemed media companies like the New York Times,
                 the data formatting is inconsistent and disorganized at times.
-                So for the average reader, it definitely will be difficult to keep track of how headlines change over time.
+                So for the average reader, it definitely will be difficult to keep track of how 
+                headlines change over time.
             </p>
+
+            <div class="row">
+                <div class="col-6">
+                    <img src="imgs/manycats_PCA.png" style="text-align:center; width:80%; height:auto;">
+                </div>
+                <div class="col-6">
+                    <p class="description" style="padding-top:0px">
+                        PCA still works when we include many different news desks categories. 
+                        If anything, it is even more interesting now. Interpretting the
+                        different clusters that form above, we see that all the business,
+                        economy, and finance related headlines tend to be projected into the
+                        bottom area of the scatter plot, signifying that these points are
+                        kind of in a region of their own in the high dimensional vector space.
+                    </p>
+                </div>
+                <p class="description" style="padding-top:0px">
+                    Then we see that the world, international, and foreign news desk seems
+                    to form a cluster on the left, while the weekend news forms a cluster
+                    on the right. Finally, the home news desk forms a cluster in between the
+                    "world, international, and foreign" and "weekend" clusters. Does this
+                    PCA visualization make sense intuitively? 
+                </p>
+            </div>
         </div>
 
         <div class="step">
-            <h2>Through the years</h2>
+            <h2>
+                Through the years, what events can we observe and learn about
+                just from looking at the headlines. 
+            </h2>
 
             <hr>
 
@@ -171,8 +251,10 @@
                 </div>
             </div>
             <p class="description">
-                These are some of the major headlines published around that 
-                time period, through the years 1991 to 1994. 
+                These are some of the major headlines about the Soviet Union
+                published around that 
+                time period, through the years 1991 to 1994. We filtered for
+                headlines that contained the word "Soviet". 
             </p>    
 
             <button id="sovietHeadlinesButton">See Other Headlines</button>
@@ -180,6 +262,12 @@
 
             <hr>
             <h4>2001</h4>
+            <p class="description" style="padding-bottom: 40px">
+                Surprisingly, simply filtering through headlines, it is
+                difficult to find a lot of articles about the attacks on the
+                New York twin towers on September 11th, 2001, especially
+                considering this event took place in New York City.
+            </p>
 
             <hr>
             <h4>2007</h4>
@@ -237,6 +325,14 @@ a                       <a href="https://www.nytimes.com/2008/10/06/business/06m
                     </p>
                 </div>
             </div>
+            <p class="description">                
+                These are some of the major headlines concerning the stock
+                market and financial crisis published around that 
+                time period, through the years 2007 to 2010. We filtered for
+                headlines that contained the word "recession". 
+            </p>
+            <button id="financialCrisisButton">See Other Headlines</button>
+            <div id="financial-crisis-headlines"></div>
 
             <hr>
             <h4>2016</h4>
@@ -249,13 +345,80 @@ a                       <a href="https://www.nytimes.com/2008/10/06/business/06m
                 time all show up as top keywords in the headlines.
             </p>  
 
+            <div class="row">
+                <div class="col-4">
+                    <div class="statistic">
+                        <h2>4869</h2>
+                        <p style="font-size: 15px;">
+                            In 2016, the name Donald or Trump was mentioned 4869
+                            times in a New York Times Headline. 
+                        </p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="statistic">
+                        <h2>2024</h2>
+                        <p style="font-size: 15px;">
+                            In 2016, the name Hillary or Clinton was mentioned 2024
+                            times in a New York Times Headline. 
+                        </p>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="statistic">
+                        <h2>886</h2>
+                        <p style="font-size: 15px;">
+                            In 2016, the name Bernie or Sanders was mentioned 886
+                            times in a New York Times Headline. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
             <h4>2019</h4>
             <p class="description">
                 This is the last years of what we have data for. This is
                 where headlines about the coronavirus and the 2019
-                pandemic start to appear. We can chart the spread of
-                coronavirus. 
-            </p>  
+                pandemic start to appear. There are many articles written about
+                when Donald Trump contracted the coronavirus. Some articles gave
+                Americans live updates of case and death counts as well as 
+                hospital conditions in the country at certain points of the
+                pandemic. 
+            </p>
+
+            <div class="row">
+                <div class="col-4">
+                    <img src="imgs/covid1.png">
+                    <div class="statistic">
+                        <h2>3699</h2>
+                        <p style="font-size: 15px;">
+                            In 2020, the word coronavirus was mentioned 3699
+                            times in a New York Times Headline. 
+                        </p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <img src="imgs/covid2.png">
+                    <div class="statistic">
+                        <h2>1372</h2>
+                        <p style="font-size: 15px;">
+                            In 2020, the word pandemic was mentioned 1372
+                            times in a New York Times Headline. 
+                        </p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <img src="imgs/covid3.png">
+                    <div class="statistic">
+                        <h2>799</h2>
+                        <p style="font-size: 15px;">
+                            In 2016, the name covid was mentioned 799
+                            times in a New York Times Headline. 
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="step">
             <p id="created-by-text">This project was created by:</p>
@@ -263,20 +426,51 @@ a                       <a href="https://www.nytimes.com/2008/10/06/business/06m
                 <div class="team-member">
                     <img src="imgs/Joshua.jpg" alt="Joshua Zhang">
                     <p>Joshua Zhang</p>
+                    <p>Email: joshua_zhang@college.harvard.edu</p>
+                    <p>Also find Josh's
+                        <a href="https://www.linkedin.com/in/jzhang2003/">LinkedIn</a> here. 
+                    </p>
                 </div>
 
                 <div class="team-member">
                     <img src="imgs/Eric.jpg" alt="Eric Vasquez">
 
                     <p>Eric Vasquez</p>
+                    <p>Email: evasquezreyes@college.harvard.edu</p>
+                    <p>Also find Eric's
+                        <a href="https://www.linkedin.com/in/eric-vasquez-reyes-b48b28203/">LinkedIn</a> here. 
+                    </p>
                 </div>
 
             </div>
         </div>
 
         <footer>
-            <p>Acknowledgements</p>
-            <p>Sources</p>
+            <h4>Acknowledgements</h4>
+            <p>
+                We were inspired by the designs of these 
+                <a href="https://impact.campaignzero.org/">Campaign Zero</a> and 
+                <a href="https://www.bloomberg.com/politics/graphics/2015-hillary-womens-movement-timeline/">
+                    Bloomberg
+                </a> websites. Links embedded here. Also big
+                thank you to the other members of our team, Seb Lozano, Jules Niyitegeka, and 
+                Peter Wanjiru. Thank you to our TFs who guided us through this project: Robert and Varshini. 
+                Thanks to the entire CS1710 staff for an amazing semester! 
+            </p>
+            <h4>Sources</h4>
+            <p> 
+                Our dataset came from Kaggle. We used the 
+                <a href="https://www.kaggle.com/datasets/johnbandy/new-york-times-headlines">
+                    Three Decades of New York Times Headlines
+                </a> dataset as well as the
+                <a href="https://www.kaggle.com/datasets/tumanovalexander/nyt-articles-data">
+                    New York Times Articles 1920-2020
+                </a> dataset, both publically availible for use from Kaggle. Some of the 
+                news desk descriptions came from the New York Times' own website. All of the photos
+                are either from a New York Times article or a image of the New York Times 
+                newspaper archives, available to us online.
+                
+            </p>
         </footer>
     </div>
     <!-- Load JS libraries -->
@@ -304,6 +498,6 @@ a                       <a href="https://www.nytimes.com/2008/10/06/business/06m
     <script src="js/lineGraph.js"></script>
     <script src="js/wordCloud.js"></script>
     <script src="js/heatmap.js"></script>
-    <script src="js/sovietHeadlines.js"></script>
+    <script src="js/HeadlineDisplay.js"></script>
 </body>
 </html>

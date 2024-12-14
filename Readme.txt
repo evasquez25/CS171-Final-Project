@@ -1,4 +1,4 @@
----- Used libraries ----
+---- How to Run the Code ----
 How to run the code: You can access our site with the link 
 
 https://evasquez25.github.io/CS171-Final-Project/
@@ -7,6 +7,9 @@ But, you can also use VSCode's live server to host the
 site locally and enjoy all the same features, given that
 you have cloned our code repository. 
 
+Here is the link to our video:
+
+https://youtu.be/gURySpjbFlc
 
 ---- Used libraries ----
 - d3 for Javascript
